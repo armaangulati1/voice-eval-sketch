@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "voice-eval-sketch"
+version = "0.1.0"
+description = "A small, self-authored adversarial evaluation demo for voice-care conversation AI."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Armaan Gulati" }]
+keywords = ["evaluation", "adversarial", "llm-as-judge", "voice-ai", "synthetic-data"]
+
+# The eval harness has zero runtime dependencies beyond the standard library.
+dependencies = []
+
+[project.optional-dependencies]
+# Only needed if you wire up the optional live LLM extractor (never required
+# by the offline suite).
+llm = ["anthropic>=0.39"]
+# Developer tooling.
+dev = ["pytest>=8.0", "ruff>=0.6"]
+
+[tool.setuptools.packages.find]
+include = ["voice_eval*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "network: tests that make live network calls (excluded from the default suite).",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
