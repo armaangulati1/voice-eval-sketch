@@ -6,3 +6,8 @@ __pycache__/
 *.egg-info/
 .DS_Store
 .env
+
+# The real vendor blocklist stays local. A named list of companies is revealing
+# in a deliberately generic artifact, so only tests/vendor_blocklist.example.txt
+# (invented placeholders) is committed.
+tests/vendor_blocklist.local.txt

@@ -1,0 +1,17 @@
+# Vendor blocklist (example).
+#
+# Copy this file to vendor_blocklist.local.txt and add the real product or
+# company names you want the guard to catch. The .local.txt copy is gitignored
+# on purpose: a named list of companies is itself revealing, so it stays on
+# your machine and never ships with the artifact.
+#
+# One whole word token per line. Blank lines and lines starting with # are
+# ignored. Matching is case insensitive and word bounded, so a token never
+# trips on a longer word that merely contains it.
+#
+# The placeholder tokens below are invented for the tests. They are not real
+# products. Keeping them here means the guard, the word boundary test and the
+# planted name test all work on a fresh clone with no local file present.
+
+examplevendorco
+placeholderproductco

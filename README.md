@@ -109,4 +109,13 @@ tests/             # offline pytest: golden integrity, scorer gap, judge exclusi
   system. It demonstrates how I think about adversarial evaluation and judge
   discipline; it is not a shipped classifier.
 - A test (`tests/test_no_company_names.py`) enforces that the artifact stays
-  generic: no company or product names appear anywhere in it.
+  generic: no company or product name from its blocklist appears anywhere in it.
+  The blocklist is loaded from `tests/vendor_blocklist.local.txt`, which is
+  gitignored and ships with nobody's name in it;
+  `tests/vendor_blocklist.example.txt` is the committed template and contains
+  invented placeholder tokens only. An earlier version of this repo hard coded
+  a list of real names in the test file itself, which was both a neutrality
+  failure and a targeting signal, and it forced the guard to exempt itself from
+  its own scan. The guard now scans every text file including itself. Note the
+  guard's scope: it checks the working tree, not git history, and it only
+  catches names that are on its list.
